@@ -15,6 +15,7 @@
     "connect": "^3.6.6",
     "dotenv": "^6.0.0",
     "emmett": "^3.1.1",
+    "engine.io": "^3.2.0",
     "jsonwebtoken": "^8.3.0",
     "jwks-rsa": "^1.2.1",
     "live-server": "^1.2.0",

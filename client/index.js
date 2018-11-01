@@ -1,19 +1,33 @@
 import auth0 from 'auth0-js'
 import Emmett from 'emmett'
-import shoe from 'shoe'
-
+//import shoe from 'shoe'
+var socket = require('engine.io-client');
 
 class Client {
   constructor() {
-    this.stream = shoe('http://localhost:9999/sub')
-    this.stream.on('connect', () => {
-      this.connected = true
-    })
+    // this.stream = shoe('http://localhost:9999/sub')
+    // this.stream.on('connect', () => {
+    //   this.connected = true
+    // })
+    this.socket = socket('ws://localhost:80');
+    this.socket.on('open', function(){
+      console.log('opened!', this.socket)
+    });
+    this.socket.on('message', function(data){
+      console.log('message!', data)
+    });
+    this.socket.on('close', function(){
+      console.log('close!', this.socket)
+    });
   }
 
   notify() {
     console.log('sending', window.auth.token)
-    this.stream.write(JSON.stringify({auth: window.auth.token}))
+    this.socket.send(JSON.stringify({auth: window.auth.token}))
+  }
+
+  send(message) {
+    this.socket.send(message)
   }
 }
 
@@ -89,6 +103,8 @@ window.auth = new Auth()
 
 var button = document.getElementById('login')
 var client = new Client()
+
+window.client = client;
 
 window.boot = function() {
   button.addEventListener('click', (event) => {
