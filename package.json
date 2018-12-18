@@ -1,9 +1,11 @@
 {
+  "name": "auth0tter",
+  "main": "lib/index.js",
+  "version": "1.0.0",
   "license": "ISC",
   "scripts": {
-    "serve": "live-server --port=9000 public/",
-    "watch": "watchify client/index.js -o public/index.js -t [ babelify --presets [ '@babel/preset-env' ] ]",
-    "server": "ls server/* | entr -r babel-node server/index.js"
+    "server": "ls server/* | entr -r babel-node server/index.js --presets '@babel/preset-env'",
+    "db": "mongod --dbpath=./appdata"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.49",
@@ -12,16 +14,10 @@
     "auth0-js": "^9.6.0",
     "babelify": "^9.0.0",
     "browserify": "^16.2.2",
-    "connect": "^3.6.6",
     "dotenv": "^6.0.0",
-    "emmett": "^3.1.1",
-    "engine.io": "^3.2.0",
     "jsonwebtoken": "^8.3.0",
     "jwks-rsa": "^1.2.1",
-    "live-server": "^1.2.0",
     "mongodb": "^3.0.10",
-    "npx": "^10.2.0",
-    "reconnect": "^2.0.2",
-    "watchify": "^3.11.0"
+    "socket.io": "^2.2.0"
   }
 }

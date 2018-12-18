@@ -1,0 +1,22 @@
+{
+  "name": "auth0tter",
+  "main": "dist/index.js",
+  "version": "1.0.0",
+  "license": "ISC",
+  "scripts": {
+    "watch": "watchify src/auth0tter.js -o dist/index.js -t [ babelify --presets [ '@babel/preset-env' ] ] -s auth0tter"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
+    "auth0-js": "^9.6.0",
+    "babelify": "^9.0.0",
+    "browserify": "^16.2.2",
+    "dotenv": "^6.0.0",
+    "emmett": "^3.1.1",
+    "engine.io": "^3.2.0",
+    "npx": "^10.2.0",
+    "socket.io": "^2.2.0",
+    "watchify": "^3.11.0"
+  }
+}
